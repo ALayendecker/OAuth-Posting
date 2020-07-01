@@ -1,0 +1,38 @@
+{
+  "name": "oauth-posting",
+  "version": "1.0.0",
+  "description": "App to create public and private posts",
+  "main": "app.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon app",
+    "start": "cross-env NODE_ENV=production node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALayendecker/OAuth-Posting.git"
+  },
+  "author": "Andrew Layendecker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ALayendecker/OAuth-Posting/issues"
+  },
+  "homepage": "https://github.com/ALayendecker/OAuth-Posting#readme",
+  "dependencies": {
+    "connect-mongo": "^3.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "express-session": "^1.17.1",
+    "method-override": "^3.0.0",
+    "moment": "^2.27.0",
+    "mongoose": "^5.9.20",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "nodemon": "^2.0.4"
+  }
+}
