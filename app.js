@@ -24,6 +24,7 @@ if (process.env.NODE_ENV === "development") {
 
 //routes
 app.use("/", require("./routes/index"));
+app.use("/auth", require("./routes/auth"));
 
 //Handlebars
 app.engine(".hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
