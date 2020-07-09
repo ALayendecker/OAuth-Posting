@@ -5,11 +5,11 @@ const router = express.Router();
 
 //route get/
 router.get("/", (req, res) => {
-  res.send("login");
+  res.render("Login");
 });
 
 router.get("/dashboard", (req, res) => {
-  res.send("dashboard");
+  res.render("Dashboard");
 });
 
 module.exports = router;
