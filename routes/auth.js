@@ -17,4 +17,12 @@ router.get(
     res.redirect("/dashboard");
   }
 );
+
+// Logout user
+//  /auth/google/logout
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
+
 module.exports = router;
