@@ -5,19 +5,10 @@
   "main": "app.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon app",
-    "start": "cross-env NODE_ENV=production node app",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ALayendecker/OAuth-Posting.git"
+    "start": "cross-env NODE_ENV=production node app"
   },
   "author": "Andrew Layendecker",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ALayendecker/OAuth-Posting/issues"
-  },
-  "homepage": "https://github.com/ALayendecker/OAuth-Posting#readme",
   "dependencies": {
     "connect-mongo": "^3.2.0",
     "dotenv": "^8.2.0",
