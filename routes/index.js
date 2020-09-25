@@ -9,7 +9,7 @@ router.get("/", ensureGuest, (req, res) => {
   res.render("login", { layout: "login" });
 });
 
-router.get("/dashboard", ensureAuth, (req, res) => {
+router.get("/dashboard", ensureAuth, async (req, res) => {
   res.render("dashboard");
 });
 

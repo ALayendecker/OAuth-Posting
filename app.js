@@ -1,11 +1,13 @@
 const path = require("path");
 const express = require("express");
+// const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const exphbs = require("express-handlebars");
 const morgan = require("morgan");
+const exphbs = require("express-handlebars");
 const passport = require("passport");
 const session = require("express-session");
 const connectDB = require("./config/db");
+// const { static } = require("express");
 
 //Loading config
 dotenv.config({ path: "./config/config.env" });
@@ -15,22 +17,15 @@ require("./config/passport")(passport);
 
 connectDB();
 
+// app.use
 const app = express();
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 //logging with morgan
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
-
-//routes
-app.use("/", require("./routes/index"));
-app.use("/auth", require("./routes/auth"));
 
 //Handlebars
 app.engine(".hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
@@ -46,18 +41,28 @@ app.use(
 );
 
 //Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
-//static
-app.use(express.static(path.join(__dirname, "public")));
-app.get("/", function (req, res) {
-  res.render("main");
+//global
+app.use(function (req, res, next) {
+  res.locals.user = req.user || null;
+  next();
 });
 
+// static
+app.use(express.static(path.join(__dirname, "public")));
+
+//routes
+app.use("/", require("./routes/index"));
+app.use("/auth", require("./routes/auth"));
+
+//port and listen
 const PORT = process.env.PORT || 3000;
 
 app.listen(
   PORT,
   console.log(
-    `you are connect to port ${process.env.NODE_ENV} http://localhost:${PORT}`
+    `you are connected to port ${process.env.NODE_ENV} http://localhost:${PORT}`
   )
 );
