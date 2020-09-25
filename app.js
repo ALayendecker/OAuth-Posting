@@ -1,13 +1,13 @@
 const path = require("path");
 const express = require("express");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const exphbs = require("express-handlebars");
 const passport = require("passport");
 const session = require("express-session");
 const connectDB = require("./config/db");
-const { static } = require("express");
+// const { static } = require("express");
 
 //Loading config
 dotenv.config({ path: "./config/config.env" });
@@ -17,8 +17,8 @@ require("./config/passport")(passport);
 
 connectDB();
 
+// app.use
 const app = express();
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -56,6 +56,8 @@ app.use(express.static(path.join(__dirname, "public")));
 //routes
 app.use("/", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
+
+//port and listen
 const PORT = process.env.PORT || 3000;
 
 app.listen(
